@@ -11,10 +11,7 @@ object IzohLog {
     @Volatile
     @PublishedApi
     internal var currentLogger: IzohLogger = FailureIzohLogger
-        private set(value) {
-            isEnabled = true
-            field = value
-        }
+        private set
 
     @JvmStatic
     public fun enabled() {

@@ -20,3 +20,13 @@ public fun Priority.stringify(): String = when (this) {
     Priority.WARNING -> "W"
     Priority.FAILURE -> "E"
 }
+
+public fun LoggingLevel.asString(): String {
+    return when(this) {
+        LoggingLevel.VERBOSE -> "V"
+        LoggingLevel.DEBUG -> "D"
+        LoggingLevel.INFO -> "I"
+        LoggingLevel.WARNING -> "W"
+        LoggingLevel.FAILURE -> "F"
+    }
+}
