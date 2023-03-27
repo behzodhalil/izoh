@@ -19,7 +19,7 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: gradle
-    - uses: ./.github/actions/gradle-cache
+    - uses: ./.github/gradle-cache
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
