@@ -1,0 +1,9 @@
+[versions]
+ktx = "1.7.0"
+annotation = "1.5.0"
+
+[libraries]
+androidx-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "ktx" }
+androidx-annotation = { group = "androidx.annotation", name = "annotation", version.ref = "annotation" }
+
+[plugins]
