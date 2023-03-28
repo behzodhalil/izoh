@@ -1,4 +1,4 @@
-package uz.behzoddev.izohcore.extension
+package uz.behzoddev.izoh_common.date
 
 import java.text.DateFormat
 import java.text.SimpleDateFormat

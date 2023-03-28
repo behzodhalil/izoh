@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "Izoh"
 include ':app'
 include ':izoh-android'
+include ':izoh-common'
