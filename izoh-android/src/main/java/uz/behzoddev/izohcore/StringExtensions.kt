@@ -13,20 +13,12 @@ public fun Throwable.stringify(): String {
   return sw.toString()
 }
 
-public fun Priority.stringify(): String = when (this) {
-  Priority.VERBOSE -> "V"
-  Priority.DEBUG -> "D"
-  Priority.INFO -> "I"
-  Priority.WARNING -> "W"
-  Priority.FAILURE -> "E"
-}
-
-public fun LoggingLevel.asString(): String {
+public fun Level.asString(): String {
   return when (this) {
-    LoggingLevel.VERBOSE -> "V"
-    LoggingLevel.DEBUG -> "D"
-    LoggingLevel.INFO -> "I"
-    LoggingLevel.WARNING -> "W"
-    LoggingLevel.FAILURE -> "F"
+    Level.VERBOSE -> "V"
+    Level.DEBUG -> "D"
+    Level.INFO -> "I"
+    Level.WARNING -> "W"
+    Level.FAILURE -> "F"
   }
 }

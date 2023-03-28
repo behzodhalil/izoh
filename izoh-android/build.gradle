@@ -9,7 +9,7 @@ apply from: "${rootDir}/spotless/spotless.gradle"
 android {}
 
 dependencies {
-
+    implementation(project(":izoh-common"))
     implementation(libs.androidx.ktx)
     implementation(libs.androidx.annotation)
     implementation 'androidx.appcompat:appcompat:1.6.1'
