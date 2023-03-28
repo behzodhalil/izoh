@@ -1,4 +1,4 @@
-package uz.behzoddev
+package uz.behzoddev.izohcore
 
 import uz.behzoddev.izohcore.Izohher
 
