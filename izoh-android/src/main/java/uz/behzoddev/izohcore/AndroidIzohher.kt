@@ -51,7 +51,6 @@ class AndroidIzohher(
     private val Application.isDebuggableApp: Boolean
       get() = (applicationInfo.flags and ApplicationInfo.FLAG_DEBUGGABLE) != 0
 
-
     public fun install(
       application: Application,
       level: Level = Level.DEBUG,
@@ -68,4 +67,3 @@ class AndroidIzohher(
     private const val MAX_TAG_LENGTH = 23
   }
 }
-
