@@ -1,4 +1,4 @@
-package uz.behzoddev.izoh_common
+package uz.behzoddev.izohcommon
 
 import org.junit.Test
 

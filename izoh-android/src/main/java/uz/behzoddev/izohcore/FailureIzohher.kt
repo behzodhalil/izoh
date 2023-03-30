@@ -1,6 +1,6 @@
 package uz.behzoddev.izohcore
 
-import uz.behzoddev.izoh_common.date.DateUtils
+import uz.behzoddev.izohcommon.date.DateUtils
 import java.text.DateFormat
 
 class FailureIzohher : Izohher {
