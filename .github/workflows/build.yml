@@ -23,7 +23,7 @@ jobs:
         with:
           distribution: adopt
           java-version: 11
-      - uses: ./.github/actions/gradle-cache
+      - uses: ./.github/workflows/gradle-caches
         with:
           key-prefix: gradle-lint
       - name: Spotless
@@ -41,7 +41,7 @@ jobs:
         with:
           distribution: adopt
           java-version: 11
-      - uses: ./.github/actions/gradle-cache
+      - uses: ./.github/workflows/gradle-caches
         with:
           key-prefix: gradle-build
       - name: Build
@@ -57,7 +57,7 @@ jobs:
         with:
           distribution: adopt
           java-version: 11
-      - uses: ./.github/actions/gradle-cache
+      - uses: ./.github/workflows/gradle-caches
         with:
           key-prefix: gradle-test
       - name: Unit tests
