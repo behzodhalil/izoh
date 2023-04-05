@@ -78,25 +78,15 @@ jobs:
       runs-on: ubuntu-latest
 
       steps:
-        - name: Prepare Release
-            # set id for get output tag_name
-            # steps.prepare_release.outputs.tag_name
-          id: prepare_release
-          run: |
-              TAG_NAME=`echo $GITHUB_REF | cut -d / -f3`
-              echo ::set-output name=tag_name::$TAG_NAME
-
-        # create release
         - name: Create Release
           id: create_release
 
-          if: ${{ steps.prepare_release.outputs.tag_name }}
           uses: actions/create-release@v1
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           with:
-            tag_name: ${{ steps.prepare_release.outputs.tag_name }}
-            release_name: Izoh ${{ steps.prepare_release.outputs.tag_name }}
+            tag_name: v0.0.5
+            release_name: Izoh v0.0.5
             body: |
               What's Changed
               - Fix script
