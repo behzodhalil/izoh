@@ -77,7 +77,6 @@ jobs:
       needs: [lint, build, test]
       runs-on: ubuntu-latest
 
-      if: contains(github.ref, 'tags/')
       steps:
         - name: Prepare Release
             # set id for get output tag_name
