@@ -78,10 +78,10 @@ jobs:
       steps:
         - name: Set execution flag for gradlew
               run: chmod +x gradlew
-                - name: Run tests and build release artifacts
-                  run: |
-                    ./gradlew assembleRelease --stacktrace
-                    ./gradlew bundleRelease
+        - name: Run tests and build release artifacts
+              run: |
+                  ./gradlew assembleRelease --stacktrace
+                  ./gradlew bundleRelease
         - name: Download APK
           uses: actions/download-artifact@v1
             with:
