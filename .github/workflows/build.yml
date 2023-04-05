@@ -72,7 +72,7 @@ jobs:
           name: testDebugUnitTest
           path: ./**/build/reports/tests/testDebugUnitTest
   create-release:
-      permissions: read-all|write-all
+      permissions: write-all
       name: Create Release
       needs: [lint, build, test]
       runs-on: ubuntu-latest
