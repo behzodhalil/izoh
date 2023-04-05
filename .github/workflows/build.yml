@@ -86,7 +86,7 @@ jobs:
               name: apk
         - name: Download Bundle
           uses: actions/download-artifact@v1
-            with:
+          with:
               name: bundle
         - name: Create Release
           id: create_release
