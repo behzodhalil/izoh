@@ -4,13 +4,14 @@ on:
   push:
     branches: [ "master" ]
     tags:
-      - v*
+      - 'v*'
   pull_request:
     branches: [ "master" ]
 
 concurrency:
   group: ${{ github.ref }}
   cancel-in-progress: true
+
 
 
 jobs:
@@ -71,13 +72,13 @@ jobs:
           name: testDebugUnitTest
           path: ./**/build/reports/tests/testDebugUnitTest
   create-release:
-      name: Create release
+      name: Create Release
       needs: [lint, build, test]
       runs-on: ubuntu-latest
 
       steps:
         - name: Checkout the code
-          uses: actions/checkout@v3
+          uses: actions/checkout@v2
         - name: Create Release
           id: create_release
           uses: actions/create-release@v1
