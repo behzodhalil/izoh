@@ -82,38 +82,37 @@ jobs:
           run: ./gradlew bundleRelease
         - name: Download APK
           uses: actions/download-artifact@v1
-            with:
+          with:
               name: apk
         - name: Download Bundle
           uses: actions/download-artifact@v1
             with:
               name: bundle
         - name: Create Release
-            id: create_release
-            uses: actions/create-release@v1
-            env:
+          id: create_release
+          uses: actions/create-release@v1
+          env:
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            with:
-              pre_release: false
-              draft: false
-              tag_name: ${{ github.ref }}
-              release_name: Release ${{ github.ref }}
+          with:
+            pre_release: false
+            tag_name: ${{ github.ref }}
+            release_name: Release ${{ github.ref }}
         - name: Upload Release APK
-            id: upload_release_apk
-            uses: actions/upload-release-asset@v1.0.1
-            env:
+          id: upload_release_apk
+          uses: actions/upload-release-asset@v1.0.1
+          env:
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            with:
+          with:
               upload_url: ${{ steps.create_release.outputs.upload_url }}
               asset_path: apk/app-releaseUnsigned-unsigned.apk
               asset_name: ${{ github.event.repository.name }}.aab
               asset_content_type: application/zip
         - name: Upload Release AAB
-            id: upload_release_aab
-            uses: actions/upload-release-asset@v1.0.1
-            env:
+          id: upload_release_aab
+          uses: actions/upload-release-asset@v1.0.1
+          env:
               GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            with:
+          with:
               upload_url: ${{ steps.create_release.outputs.upload_url }}
               asset_path: bundle/app-release.aab
               asset_name: ${{ github.event.repository.name }}.aab
