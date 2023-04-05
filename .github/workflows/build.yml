@@ -79,7 +79,7 @@ jobs:
         - name: Run build release artifacts
           run: ./gradlew assembleRelease --stacktrace
         - name: Run bundle release
-          run ./gradlew bundleRelease
+          run: ./gradlew bundleRelease
         - name: Download APK
           uses: actions/download-artifact@v1
             with:
