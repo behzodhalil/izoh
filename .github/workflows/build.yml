@@ -70,7 +70,7 @@ jobs:
         with:
           name: testDebugUnitTest
           path: ./**/build/reports/tests/testDebugUnitTest
-    create-release:
+  create-release:
       name: Create release
       needs: [lint, build, test]
       runs-on: ubuntu-latest
