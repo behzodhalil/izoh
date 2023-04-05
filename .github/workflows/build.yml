@@ -97,7 +97,7 @@ jobs:
         # create release
         - name: Create Release
           id: create_release
-          # check tag_name
+
           if: ${{ steps.prepare_release.outputs.tag_name }}
           uses: actions/create-release@v1
           env:
