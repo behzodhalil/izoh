@@ -76,8 +76,6 @@ jobs:
       runs-on: ubuntu-latest
 
       steps:
-        - name: Set execution flag for gradlew
-              run: chmod +x gradlew
         - name: Run tests and build release artifacts
               run: |
                   ./gradlew assembleRelease --stacktrace
