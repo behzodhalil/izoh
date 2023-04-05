@@ -77,21 +77,38 @@ jobs:
       needs: [lint, build, test]
       runs-on: ubuntu-latest
 
+      if: contains(github.ref, 'tags/')
       steps:
-        - name: Checkout the code
-          uses: actions/checkout@v2
+        - name: Prepare Release
+            # set id for get output tag_name
+            # steps.prepare_release.outputs.tag_name
+          id: prepare_release
+          run: |
+              TAG_NAME=`echo $GITHUB_REF | cut -d / -f3`
+              echo ::set-output name=tag_name::$TAG_NAME
+
+        - name: Download Archiver File
+          if: steps.prepare_release.outputs.tag_name
+          uses: actions/download-artifact@v2
+          with:
+             # download archiver file
+             name: termux-sdl-debug
+
+        # create release
         - name: Create Release
           id: create_release
+          # check tag_name
+          if: ${{ steps.prepare_release.outputs.tag_name }}
           uses: actions/create-release@v1
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           with:
-            tag_name: ${{ github.ref }}
-            release_name: Release ${{ github.ref }}
+            tag_name: ${{ steps.prepare_release.outputs.tag_name }}
+            release_name: Izoh ${{ steps.prepare_release.outputs.tag_name }}
             body: |
-                What's Changed
-                - Fix script
-                - Change the group id
+              What's Changed
+              - Fix script
+              - Change the group id
             draft: false
             prerelease: false
 
