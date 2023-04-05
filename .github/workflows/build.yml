@@ -3,6 +3,8 @@ name: Android CI
 on:
   push:
     branches: [ "master" ]
+    tags:
+      - v*
   pull_request:
     branches: [ "master" ]
 
@@ -68,3 +70,54 @@ jobs:
         with:
           name: testDebugUnitTest
           path: ./**/build/reports/tests/testDebugUnitTest
+    create-release:
+      name: Create release
+      needs: [lint, build, test]
+      runs-on: ubuntu-latest
+
+      steps:
+        - name: Set execution flag for gradlew
+              run: chmod +x gradlew
+                - name: Run tests and build release artifacts
+                  run: |
+                    ./gradlew assembleRelease --stacktrace
+                    ./gradlew bundleRelease
+        - name: Download APK
+          uses: actions/download-artifact@v1
+            with:
+              name: apk
+        - name: Download Bundle
+          uses: actions/download-artifact@v1
+            with:
+              name: bundle
+        - name: Create Release
+            id: create_release
+            uses: actions/create-release@v1
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            with:
+              pre_release: false
+              draft: false
+              tag_name: ${{ github.ref }}
+              release_name: Release ${{ github.ref }}
+        - name: Upload Release APK
+            id: upload_release_apk
+            uses: actions/upload-release-asset@v1.0.1
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            with:
+              upload_url: ${{ steps.create_release.outputs.upload_url }}
+              asset_path: apk/app-releaseUnsigned-unsigned.apk
+              asset_name: ${{ github.event.repository.name }}.aab
+              asset_content_type: application/zip
+        - name: Upload Release AAB
+            id: upload_release_aab
+            uses: actions/upload-release-asset@v1.0.1
+            env:
+              GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            with:
+              upload_url: ${{ steps.create_release.outputs.upload_url }}
+              asset_path: bundle/app-release.aab
+              asset_name: ${{ github.event.repository.name }}.aab
+              asset_content_type: application/zip
+

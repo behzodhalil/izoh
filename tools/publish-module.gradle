@@ -38,7 +38,7 @@ afterEvaluate {
         pom {
           name = PUBLISH_ARTIFACT_ID
           description = 'Izoh is a lightweight logger library for Android '
-          url = 'https://github.com/behzod1996/izoh'
+          url = 'https://github.com/behzodhalil/izoh'
           licenses {
             license {
               name = 'Izoh License'
@@ -53,9 +53,9 @@ afterEvaluate {
           }
 
           scm {
-            connection = 'scm:git:github.com/behzod1996/izoh.git'
-            developerConnection = 'scm:git:ssh://github.com/behzod1996/izoh.git'
-            url = 'https://github.com/behzod1996/izoh'
+            connection = 'scm:git:github.com/behzodhalil/izoh.git'
+            developerConnection = 'scm:git:ssh://github.com/behzodhalil/izoh.git'
+            url = 'https://github.com/behzodhalil/izoh'
           }
         }
       }
