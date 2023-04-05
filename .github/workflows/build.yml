@@ -8,10 +8,10 @@ on:
   pull_request:
     branches: [ "master" ]
 
+
 concurrency:
   group: ${{ github.ref }}
   cancel-in-progress: true
-
 
 
 jobs:
@@ -72,6 +72,7 @@ jobs:
           name: testDebugUnitTest
           path: ./**/build/reports/tests/testDebugUnitTest
   create-release:
+      permissions: read-all|write-all
       name: Create Release
       needs: [lint, build, test]
       runs-on: ubuntu-latest
