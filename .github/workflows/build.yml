@@ -71,27 +71,5 @@ jobs:
         with:
           name: testDebugUnitTest
           path: ./**/build/reports/tests/testDebugUnitTest
-  create-release:
-      permissions: write-all
-      name: Create Release
-      needs: [lint, build, test]
-      runs-on: ubuntu-latest
-
-      steps:
-        - name: Create Release
-          id: create_release
-
-          uses: actions/create-release@v1
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          with:
-            tag_name: v0.0.5
-            release_name: Izoh v0.0.5
-            body: |
-              What's Changed
-              - Fix script
-              - Change the group id
-            draft: false
-            prerelease: false
 
 
