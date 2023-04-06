@@ -1,6 +1,6 @@
 plugins {
-    id 'com.android.library'
-    id 'org.jetbrains.kotlin.android'
+  id 'com.android.library'
+  id 'org.jetbrains.kotlin.android'
 }
 ext {
   PUBLISH_GROUP_ID = 'io.github.behzodhalil'
@@ -15,10 +15,10 @@ apply from: "${rootDir}/spotless/spotless.gradle"
 android {}
 
 dependencies {
-    implementation(project(":izoh-common"))
+  api project(":izoh-common")
 
-    implementation(libs.androidx.ktx)
-    implementation(libs.androidx.annotation)
+  implementation(libs.androidx.ktx)
+  implementation(libs.androidx.annotation)
 
-    testImplementation(libs.junit)
+  testImplementation(libs.junit)
 }
