@@ -1,4 +1,4 @@
-package uz.behzoddev.izohcore
+package uz.behzoddev.izohandroid
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
