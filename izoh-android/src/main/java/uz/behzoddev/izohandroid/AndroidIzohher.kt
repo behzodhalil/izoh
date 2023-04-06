@@ -1,21 +1,25 @@
-package uz.behzoddev.izohcore
+package uz.behzoddev.izohandroid
 
 import android.app.Application
 import android.content.pm.ApplicationInfo
 import android.os.Build
 import android.util.Log
 import androidx.annotation.ChecksSdkIntAtLeast
+import uz.behzoddev.izohandroid.core.Izohher
+import uz.behzoddev.izohcommon.level.LogLevel
+import uz.behzoddev.izohcommon.level.asAndroidLevel
+import uz.behzoddev.izohcommon.string.stringify
 
-class AndroidIzohher(
+class AndroidIzohher constructor(
   private val maxTagLength: Int = MAX_TAG_LENGTH
 ) : Izohher {
 
-  override fun log(level: Level, tag: String, message: String, throwable: Throwable?) {
-    androidLog(level = level, tag = tag, message = message, throwable = throwable)
+  override fun log(logLevel: LogLevel, tag: String, message: String, throwable: Throwable?) {
+    androidLog(logLevel = logLevel, tag = tag, message = message, throwable = throwable)
   }
 
-  private fun androidLog(level: Level, tag: String, message: String, throwable: Throwable?) {
-    val currentPriority = level.asAndroidLevel()
+  private fun androidLog(logLevel: LogLevel, tag: String, message: String, throwable: Throwable?) {
+    val currentPriority = logLevel.asAndroidLevel()
     val currentTag = checkAndReplaceTag(tag)
     val currentMessage = composedAndPrint(message)
     val lastMessage = lastMessage(currentMessage, throwable)
@@ -53,14 +57,10 @@ class AndroidIzohher(
 
     public fun install(
       application: Application,
-      level: Level = Level.DEBUG,
       maxTagLength: Int = MAX_TAG_LENGTH
     ) {
       if (application.isDebuggableApp) {
-        Izoh.install {
-          logger(Platform.Android, maxTagLength)
-          enabled()
-        }
+        Izoh.install(AndroidIzohher(maxTagLength))
       }
     }
 
