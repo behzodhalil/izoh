@@ -1,19 +1,23 @@
-package uz.behzoddev.izohcore
+package uz.behzoddev.izohandroid
 
+import uz.behzoddev.izohandroid.core.Izohher
 import uz.behzoddev.izohcommon.date.DateUtils
+import uz.behzoddev.izohcommon.level.LogLevel
+import uz.behzoddev.izohcommon.string.asString
+import uz.behzoddev.izohcommon.string.stringify
 import java.text.DateFormat
 
 class FailureIzohher : Izohher {
 
-  override fun log(level: Level, tag: String, message: String, throwable: Throwable?) {
-    val currentMessage = composedAndPrint(level, tag, message)
+  override fun log(logLevel: LogLevel, tag: String, message: String, throwable: Throwable?) {
+    val currentMessage = composedAndPrint(logLevel, tag, message)
     val finalMessage = failureMessage(throwable, currentMessage)
-    sanitizeAndLogPriority(level, finalMessage)
+    sanitizeAndLogPriority(logLevel, finalMessage)
   }
 
-  private fun sanitizeAndLogPriority(level: Level, message: String) {
-    when (level) {
-      Level.FAILURE -> System.err.println(message)
+  private fun sanitizeAndLogPriority(logLevel: LogLevel, message: String) {
+    when (logLevel) {
+      LogLevel.FAILURE -> System.err.println(message)
       else -> println(message)
     }
   }
@@ -24,10 +28,10 @@ class FailureIzohher : Izohher {
     } ?: currentMessage
   }
 
-  private fun composedAndPrint(level: Level, tag: String, message: String): String {
+  private fun composedAndPrint(logLevel: LogLevel, tag: String, message: String): String {
     val now = formatAndCurrentTime()
     val currentThread = runCurrentThread()
-    return "$now ($currentThread) [${level.asString()}/$tag]: $message"
+    return "$now ($currentThread) [${logLevel.asString()}/$tag]: $message"
   }
 
   private fun formatAndCurrentTime(): String {
