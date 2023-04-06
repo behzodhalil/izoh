@@ -32,7 +32,6 @@ inline fun Any.debug(
   Izoh.log(logLevel = logLevel, throwable = throwable, tag = tagOrCaller, message = { "\uD83D\uDD35 ${message()}" })
 }
 
-
 @PublishedApi
 internal fun Any.outerClassSimpleTagName(): String {
   val javaClass = this::class.java
