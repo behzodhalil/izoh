@@ -1,7 +1,7 @@
 package uz.behzoddev
 
 import android.app.Application
-import uz.behzoddev.izohcore.AndroidIzohher
+import uz.behzoddev.izohandroid.AndroidIzohher
 
 class IzohApplication : Application() {
 
