@@ -16,7 +16,7 @@ Add the dependency below into your **module**'s `build.gradle` file:
 
 ```gradle
 dependencies {
-    implementation("io.github.behzod1996:izoh:$version")
+    implementation("io.github.behzodhalil:izoh:$version")
 }
 ```
 
@@ -43,5 +43,9 @@ class IzohApp : Application() {
 Now, you can easily print log messages using the following syntax:
 
 ```kotlin
-izoh { "This is a izoh logging library" }
+success { "🟡 There is a success log function" }
+
+failure { "🔴 There is a failure log function" }
+
+debug { "🔵 There is a debug log function" }
 ```
